@@ -2,7 +2,7 @@ You can run any program neede java to be installed on your system or use online 
 
 Use following commands
 
->> javac test.java
+> \>> javac test.java
 
 
->> java test
+> \>> java test
