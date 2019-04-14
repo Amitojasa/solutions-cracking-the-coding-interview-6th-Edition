@@ -21,10 +21,7 @@ public class LinkedList {
 	{ 
 		Node new_node = new Node(data); 
 		new_node.next = null; 
-		
-		if(data==6){
-			i=new_node;
-		}
+			
 		
 		if (list.head == null) { 
 			list.head = new_node; 
@@ -71,61 +68,57 @@ public class LinkedList {
 		return list.count;
 	}
 	
-	public static Node findIntersection(LinkedList list,LinkedList list2, int diff){
-		Node l1=list.head;
-		Node l2=list2.head;
-		if(diff<0){
-			while(diff<0){
-				l2=l2.next;
-				diff++;
+	public static LinkedList sum(LinkedList l1,LinkedList l2,LinkedList l3){
+		Node currNode1=l1.head;
+		Node currNode2=l2.head;
+		int a,b,c,d=0;
+		while(currNode1!=null || currNode2!=null){
+			if(currNode1==null){
+				a=0;
+			}else{
+				a=currNode1.data;
+				currNode1=currNode1.next;
 			}
-		}else{
-			while(diff>0){
-				l1=l1.next;
-				diff--;
+			if(currNode2==null){
+				b=0;
+			}else{
+				b=currNode2.data;
+				currNode2=currNode2.next;
 			}
+			
+			c=a+b+d;
+			d=c/10;
+			
+			l3=insert(l3,c%10);
+			
+
 		}
 		
-		while(l1!=null){
-			if(l1==l2){
-				return l1;
-			}
-			l1=l1.next;
-			l2=l2.next;
-		}
-		return null;
+		return l3;
 		
 	}
-	
+		
 	public static void main(String[] args) 
 	{ 
 
 		LinkedList list = new LinkedList(); 
 		LinkedList list2 = new LinkedList(); 
+		LinkedList list3 = new LinkedList(); 
  
-		list = insert(list, 1); 
-		list = insert(list, 2); 
-		list = insert(list, 3); 
-		list = insert(list, 4); 
-		list = insert(list, 5); 
-		list = insert(list, 6); 
 		list = insert(list, 7); 
-		list = insert(list, 8);
-		list = insert(list, 9);
-		list2 = insert(list2, 10);
-		// list2 = insert(list2, 30);
+		list = insert(list, 1); 
+		list = insert(list, 6); 
+	//321+275=596
+		list2 = insert(list2, 5);
+		list2 = insert(list2, 9);
+		list2 = insert(list2, 2);
 		
-		//printList(list);
-		//printList(list2);
-		int l1=counting(list);
-		//System.out.println(l1);
-		int l2=counting(list2);
-		//System.out.println(l2);
+		list3=sum(list,list2,list3);
 		
-		Node n=findIntersection(list,list2,l1-l2);
-		if(n!=null)
-			System.out.println(n.data);
-		else
-			System.out.println("no intersection");
+		printList(list);
+		printList(list2);
+		
+		printList(list3);
+		
 	} 
 } 
